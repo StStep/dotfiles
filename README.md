@@ -1,2 +1,2 @@
-# dotfiles
-Basic linux setup
+# StStep's dotfiles
+A basic linux setup
