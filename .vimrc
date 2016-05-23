@@ -12,7 +12,7 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 " # Themes
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'chriskempson/base16-vim'
 
 " # Enhanced Syntax
@@ -181,6 +181,10 @@ set expandtab
 set list listchars=tab:\ \ ,trail:·   " Display tabs and trailing spaces visually
 set nowrap                            " Don't wrap lines
 
+" Change curser with insert mode
+:autocmd InsertEnter * set cul
+:autocmd InsertLeave * set nocul
+
 " Folds
 " =====
 set foldmethod=indent   " Fold based on indent
@@ -258,8 +262,11 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --ignore .git  --ignore .svn  --i
 
 " Airline options
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 set noshowmode " Let airline handle the mode display
+
+" Timeout faster insert mode
+set timeoutlen=50
 
 "Syntastic Options
 " let g:syntastic_check_on_open = 1
@@ -333,3 +340,6 @@ let g:syntastic_typescript_tsc_args ='-t ES5 --module commonjs'
 
 "Tern for es6
 "let g:tern#command=['/usr/local/bin/node', '/Users/ben/Code/projects/tern-es6/bin/tern']
+
+" Allow doxygen syntax highlighting
+let g:load_doxygen_syntax=1
