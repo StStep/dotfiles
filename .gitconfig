@@ -1,0 +1,25 @@
+[user]
+	name = R. Stephens Summerlin
+	email = Robert.Summerlin@gtri.gatech.edu
+[core]
+	editor = vim
+[merge]
+	tool = meld
+[diff]
+	external = /home/rsummerlin6/Documents/diff.py
+[mergetool "extMerge"]
+	trustExitCode = true
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	full = log --pretty=oneline --graph --decorate
+	alias = config --get-regexp ^alias\\.
+	rinfo = remote show origin
+	modup = submodule update --recursive
+	rv = checkout --
+[push]
+	default = simple
