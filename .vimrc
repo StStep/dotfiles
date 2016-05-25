@@ -70,6 +70,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'reedes/vim-pencil'
 "Provide snippets functionality in Vim
 Plugin 'SirVer/ultisnips'
+"UltiSnip snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
 "Standardize whitespace
 Plugin 'editorconfig/editorconfig-vim'
 
@@ -158,7 +160,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " Persistent Undo
 " ===============
-
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 " Keep undo history across sessions, by storing in file
 " Only works in MacVim (gui) mode
 if has('gui_running')
@@ -224,7 +226,7 @@ vmap <Leader>P "+P
 
 "Let K be the opposite of J
 map K i<Enter><Esc>
-"\rr => refresh vimrc
+"\ rr => refresh vimrc
 map <leader>rr :source ~/.vimrc<CR>
 " Have j and k move down visual likes when pressing, and physical lines with
 " count.
@@ -232,6 +234,8 @@ noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 " Make a commend to enable wrapping
 command! -nargs=* Wrap set wrap linebreak nolist
+" \ s Make a comand to start a search and replace under cursor
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 "PJ
 "
@@ -266,7 +270,7 @@ let g:airline_powerline_fonts = 1
 set noshowmode " Let airline handle the mode display
 
 " Timeout faster insert mode
-set timeoutlen=50
+set timeoutlen=1000 ttimeoutlen=0
 
 "Syntastic Options
 " let g:syntastic_check_on_open = 1
