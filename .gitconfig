@@ -1,25 +1,34 @@
 [user]
-	name = R. Stephens Summerlin
-	email = Robert.Summerlin@gtri.gatech.edu
+    name = R. Stephens Summerlin
+    email = Robert.Summerlin@gtri.gatech.edu
 [core]
-	editor = vim
+    editor = vim
+    autocrlf = input
 [merge]
-	tool = meld
+    tool = meld
 [diff]
-	external = /home/rsummerlin6/Documents/diff.py
+    external = /home/rsummerlin6/Documents/diff.py
 [mergetool "extMerge"]
-	trustExitCode = true
+    trustExitCode = true
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	unstage = reset HEAD --
-	last = log -1 HEAD
-	full = log --pretty=oneline --graph --decorate
-	alias = config --get-regexp ^alias\\.
-	rinfo = remote show origin
-	modup = submodule update --recursive
-	rv = checkout --
+    co = checkout
+    br = branch
+    ci = commit
+    sb = show-branch
+    st = status -uno
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    full = log --pretty=oneline --graph --decorate
+    alias = config --get-regexp ^alias\\.
+    rinfo = remote show origin
+    modup = submodule update --recursive
+    rv = checkout --
+    rbrinfo-merged = !~/.git-bins/rbrinfo-merged
+    rbrinfo-not-merged = !~/.git-bins/rbrinfo-not-merged
+    brinfo-merged = !~/.git-bins/brinfo-merged
+    brinfo-not-merged = !~/.git-bins/brinfo-not-merged
+    recent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/heads/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
+    rrecent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/remotes/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
+    arecent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/remotes/ refs/heads/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
 [push]
-	default = simple
+    default = simple
