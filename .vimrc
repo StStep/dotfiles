@@ -7,9 +7,9 @@
 filetype off
 "Add vundle and any other packages not installed through vundle to our lookup
 "path
-set rtp+=~/.vim/bundle/vundle/,/usr/local/lib/node_modules/typescript-tools
+set rtp+=~/.vim/bundle/Vundle.vim,/usr/local/lib/node_modules/typescript-tools
 call vundle#begin()
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " # Themes
 Plugin 'flazz/vim-colorschemes'

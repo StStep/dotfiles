@@ -5,9 +5,10 @@
     editor = vim
     autocrlf = input
 [merge]
-    tool = meld
+    tool = vimdiff
 [diff]
-    external = /home/rsummerlin6/Documents/diff.py
+    #external = ~/.git-bins/git_diff_wrapper
+	tool = vimdiff
 [mergetool "extMerge"]
     trustExitCode = true
 [alias]
@@ -30,5 +31,8 @@
     recent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/heads/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
     rrecent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/remotes/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
     arecent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/remotes/ refs/heads/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
+	d = difftool
 [push]
-    default = simple
+	default = matching
+[difftool]
+	prompt = false
