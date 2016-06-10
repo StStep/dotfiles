@@ -114,8 +114,7 @@ set autoread                    " Reload files changed outside vim
 set hidden                      " Buffers can exist in the background
 set history=1000                " Store lots of :cmdline history (its not 1990)
 set shellpipe=2>/dev/null>      "  Don't dump distracting text to terminal during searches!
-set re=1                        "Use a non-broken regex engine for syntax highlighting
-
+set re=1                        " Use a non-broken regex engine for syntax highlighting
 
 " General Config
 " ==============
@@ -214,12 +213,12 @@ set sidescroll=1
 
 " Copy Paste improvements
 " ===========
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+vmap <Leader>y "*y
+vmap <Leader>d "*d
+nmap <Leader>p "*p
+nmap <Leader>P "*P
+vmap <Leader>p "*p
+vmap <Leader>P "*P
 
 " Custom commands
 " ===============
@@ -238,7 +237,7 @@ command! -nargs=* Wrap set wrap linebreak nolist
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 " Trim trailing whitespace
-function ShowSpaces(...)
+function! ShowSpaces(...)
   let @/='\v(\s+$)|( +\ze\t)'
   let oldhlsearch=&hlsearch
   if !a:0
@@ -249,19 +248,19 @@ function ShowSpaces(...)
   return oldhlsearch
 endfunction
 
-function TrimSpaces() range
+function! TrimSpaces() range
   let oldhlsearch=ShowSpaces(1)
   execute a:firstline.",".a:lastline."substitute ///gec"
   let &hlsearch=oldhlsearch
 endfunction
 
-command -bar -nargs=? ShowSpaces call ShowSpaces(<args>)
-command -bar -nargs=0 -range=% TrimSpaces <line1>,<line2>call TrimSpaces()
+command! -bar -nargs=? ShowSpaces call ShowSpaces(<args>)
+command! -bar -nargs=0 -range=% TrimSpaces <line1>,<line2>call TrimSpaces()
 
 "PJ
 "
 function! PJOpen()
-  enew 
+  enew
   read ! pj
 endfunction
 
