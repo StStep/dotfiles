@@ -220,6 +220,19 @@ nmap <Leader>P "*P
 vmap <Leader>p "*p
 vmap <Leader>P "*P
 
+" vimdiff Specific controls
+" =========================
+if &diff
+    " Remap change navigation
+    nmap <c-e> [c
+    nmap <c-d> ]c
+endif
+
+" General remaps
+" =============
+" Fast quit everything
+nmap ZA :qa<CR>
+
 " Custom commands
 " ===============
 
