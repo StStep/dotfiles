@@ -16,18 +16,10 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'chriskempson/base16-vim'
 
 " # Enhanced Syntax
-Plugin 'othree/yajs.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'elzr/vim-json'
 
 " # Extra Syntax
-Plugin 'groenewege/vim-less'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'lepture/vim-jinja'
-Plugin 'dag/vim-fish'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'leafgarland/typescript-vim'
 
 " Functionality
 
