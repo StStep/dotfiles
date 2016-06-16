@@ -8,7 +8,7 @@
     tool = vimdiff
 [diff]
     #external = ~/.git-bins/git_diff_wrapper
-	tool = vimdiff
+    tool = vimdiff
 [mergetool "extMerge"]
     trustExitCode = true
 [alias]
@@ -16,7 +16,7 @@
     br = branch
     ci = commit
     sb = show-branch
-    st = status -uno
+    st = status
     unstage = reset HEAD --
     last = log -1 HEAD
     full = log --pretty=oneline --graph --decorate
@@ -31,8 +31,9 @@
     recent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/heads/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
     rrecent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/remotes/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
     arecent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/remotes/ refs/heads/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
-	d = difftool
+    d = difftool
+    apply-gitignore = !git ls-files -ci --exclude-standard -z | xargs -0r git rm --cached
 [push]
-	default = simple
+    default = simple
 [difftool]
-	prompt = false
+    prompt = false
