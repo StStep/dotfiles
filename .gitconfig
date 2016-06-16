@@ -6,6 +6,8 @@
     autocrlf = input
 [merge]
     tool = vimdiff
+[format]
+    pretty = format:%C(yellow)%h %Cblue%>(14)%ar %Cgreen%<(7)%aN%Cred%d %Creset%<(120,trunc)%s
 [diff]
     #external = ~/.git-bins/git_diff_wrapper
     tool = vimdiff
@@ -18,21 +20,24 @@
     sb = show-branch
     st = status
     unstage = reset HEAD --
+    lg = log --graph
+    lc = log @{u}..
     last = log -1 HEAD
-    full = log --pretty=oneline --graph --decorate
     alias = config --get-regexp ^alias\\.
     rinfo = remote show origin
     modup = submodule update --recursive
     rv = checkout --
-    rbrinfo-merged = !~/.git-bins/rbrinfo-merged
-    rbrinfo-not-merged = !~/.git-bins/rbrinfo-not-merged
-    brinfo-merged = !~/.git-bins/brinfo-merged
-    brinfo-not-merged = !~/.git-bins/brinfo-not-merged
-    recent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/heads/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
-    rrecent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/remotes/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
-    arecent = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/remotes/ refs/heads/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
+    rbinfo-merged = !~/.git-bins/rbrinfo-merged
+    rbinfo-not-merged = !~/.git-bins/rbrinfo-not-merged
+    binfo-merged = !~/.git-bins/brinfo-merged
+    binfo-not-merged = !~/.git-bins/brinfo-not-merged
+    binfo = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/heads/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
+    rbinfo = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/remotes/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
+    abinfo = "!r() { cur=$(git rev-parse --abbrev-ref HEAD); git for-each-ref --sort=-committerdate refs/remotes/ refs/heads/ --format='%(color:yellow)%(refname:short)|%(color:red)%(objectname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)' | sed \"s/m${cur}|/m* ${cur}|/\" | column -ts'|'; }; r"
     d = difftool
     apply-gitignore = !git ls-files -ci --exclude-standard -z | xargs -0r git rm --cached
+    fixup = !sh -c 'REV=$(git rev-parse $1) && git commit --fixup $@ && git rebase -i --autosquash $REV^' -
+    squash = !sh -c 'REV=$(git rev-parse $1) && git commit --squash $@ && git rebase -i --autosquash $REV^' -
 [push]
     default = simple
 [difftool]
