@@ -6,6 +6,10 @@
     autocrlf = input
 [merge]
     tool = vimdiff
+[log]
+    date = relative
+[blame]
+    date = relative
 [format]
     pretty = format:%C(yellow)%h %Cblue%>(14)%ar %Cgreen%<(7)%aN%Cred%d %Creset%<(120,trunc)%s
 [diff]
@@ -19,14 +23,13 @@
     ci = commit
     sb = show-branch
     st = status
-    unstage = reset HEAD --
+    rs = reset --mixed HEAD --
     lg = log --graph
     lc = log @{u}..
     last = log -1 HEAD
     alias = config --get-regexp ^alias\\.
     rinfo = remote show origin
     modup = submodule update --recursive
-    rv = checkout --
     rbinfo-merged = !~/.git-bins/rbrinfo-merged
     rbinfo-not-merged = !~/.git-bins/rbrinfo-not-merged
     binfo-merged = !~/.git-bins/brinfo-merged
