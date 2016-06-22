@@ -203,15 +203,6 @@ set scrolloff=20
 set sidescrolloff=20
 set sidescroll=1
 
-" Copy Paste improvements
-" ===========
-vmap <Leader>y "*y
-vmap <Leader>d "*d
-nmap <Leader>p "*p
-nmap <Leader>P "*P
-vmap <Leader>p "*p
-vmap <Leader>P "*P
-
 " vimdiff Specific controls
 " =========================
 if &diff
@@ -240,6 +231,8 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 command! -nargs=* Wrap set wrap linebreak nolist
 " \ s Make a comand to start a search and replace under cursor
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
 " Trim trailing whitespace
 function! ShowSpaces(...)
