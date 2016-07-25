@@ -10,11 +10,14 @@
     date = relative
 [blame]
     date = relative
+[status]
+    submoduleSummary = true
 [format]
     pretty = format:%C(yellow)%h %Cblue%>(14)%ar %Cgreen%<(7)%aN%Cred%d %Creset%<(120,trunc)%s
 [diff]
     #external = ~/.git-bins/git_diff_wrapper
     tool = vimdiff
+    submodule = log
 [mergetool "extMerge"]
     trustExitCode = true
 [alias]
