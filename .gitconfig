@@ -25,7 +25,7 @@
     st = status
     rs = reset --mixed HEAD --
     lg = log --graph
-    lc = log @{u}..
+    lc = log @{u}.. # This displays local commits
     last = log -1 HEAD
     alias = config --get-regexp ^alias\\.
     rinfo = remote show origin
@@ -46,6 +46,7 @@
     cob = checkout -b
     cm = commit -m
     save = !git add -A && git commit -m "SAVEPOINT"
+    cam = commit -am
     ap = add -p
     wip = !git add -u && git commit -m "WIP"
     undo = reset HEAD~1 --mixed
