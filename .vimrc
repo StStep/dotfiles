@@ -207,7 +207,7 @@ set sidescroll=1
 " =========================
 if &diff
     " Remap change navigation
-    nmap <c-e> [c
+    nmap <c-u> [c
     nmap <c-d> ]c
 endif
 
