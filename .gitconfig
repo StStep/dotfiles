@@ -18,6 +18,9 @@
     #external = ~/.git-bins/git_diff_wrapper
     tool = vimdiff
     submodule = log
+[push]
+    default = simple
+    recurseSubmodules = check
 [mergetool "extMerge"]
     trustExitCode = true
 [alias]
