@@ -26,6 +26,7 @@
 [alias]
     co = checkout
     br = branch
+    bra = branch -vva
     ci = commit
     sb = show-branch
     st = status
