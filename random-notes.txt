@@ -1,0 +1,2 @@
+# Xarg Example
+find . -name "cdev.h" | xargs bash -c '</dev/tty vim -d "$@"' ignoreme
