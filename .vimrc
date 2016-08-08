@@ -231,8 +231,8 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 command! -nargs=* Wrap set wrap linebreak nolist
 " \ s Make a comand to start a search and replace under cursor
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
+" \ l redraws the screen and removes any search highlighting.
+:nnoremap <Leader>l  :nohlsearch<CR>
 
 " Trim trailing whitespace
 function! ShowSpaces(...)
