@@ -32,17 +32,19 @@ Plugin 'rking/ag.vim'
 "Airline provides a stylish appearance for the styleline
 Plugin 'bling/vim-airline'
 " Syntastic provides syntax info
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 " Show git info in the gutter, sad that it and syntastic fight for space though
 "Plugin 'airblade/vim-gitgutter'
 " For use with things version control tools other than git
-Plugin 'mhinz/vim-signify'
+"Plugin 'mhinz/vim-signify'
 " Integrate with tmux
 Plugin 'christoomey/vim-tmux-navigator'
 " Provides Sublime-Text like smart completion of braces, parens and such
 Plugin 'Raimondi/delimitMate'
 " Great helpful autocompletion (requires a separate compile step)
 Plugin 'Valloric/YouCompleteMe'
+" Support plugin for YCM
+Plugin 'rdnetto/YCM-Generator'
 " Easy commenting in Vim
 Plugin 'tpope/vim-commentary'
 " Adds more text objects
@@ -301,9 +303,10 @@ map <c-t> :NERDTreeToggle<CR>
 let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
 
 "YouCompleteMe options
-let g:ycm_min_num_of_chars_for_completion=3
+let g:ycm_min_num_of_chars_for_completion=2
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-E>', '<Up>']
 "jinja config
 au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
 
