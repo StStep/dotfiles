@@ -90,8 +90,7 @@ if has('gui_running')
     set guifont=Source\ Code\ Pro\ For\ Powerline
 else
     let base16colorspace=256  " Access colors present in 256 colorspace
-    colorscheme solarized
-    set background=dark
+    colorscheme deepsea
 endif
 
 " Sanity Config
