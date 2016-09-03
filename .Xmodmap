@@ -1,0 +1,3 @@
+clear control
+keycode  105 = comma less comma less comma less
+add control = Control_L
