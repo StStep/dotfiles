@@ -33,6 +33,8 @@ Plugin 'rking/ag.vim'
 Plugin 'bling/vim-airline'
 " Syntastic provides syntax info
 Plugin 'scrooloose/syntastic'
+" PEP8 Checking
+Plugin 'nvie/vim-flake8'
 " Show git info in the gutter, sad that it and syntastic fight for space though
 "Plugin 'airblade/vim-gitgutter'
 " For use with things version control tools other than git
@@ -49,6 +51,10 @@ Plugin 'rdnetto/YCM-Generator'
 Plugin 'tpope/vim-commentary'
 " Adds more text objects
 Plugin 'wellle/targets.vim'
+" Python Folding
+Plugin 'tmhedberg/SimpylFold'
+" Python Indeting'
+Plugin 'vim-scripts/indentpython.vim'
 
 " ### Use sometimes
 
@@ -81,6 +87,7 @@ runtime! macros/matchit.vim
 " ==========
 
 "Syntax highlighting should be in 256 colors
+let python_highlight_all=1
 syntax on
 syntax enable
 set t_Co=256
@@ -165,12 +172,14 @@ endif
 
 " We want to replace tabs with spaces and have 4 space width indentation
 set autoindent
-set smartindent
 set smarttab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set expandtab
+
+" Python specific
+au BufNewFile,BufRead *.py set textwidth=79 fileformat=unix
 
 set list listchars=tab:\ \ ,trail:·   " Display tabs and trailing spaces visually
 set nowrap                            " Don't wrap lines
@@ -184,8 +193,7 @@ set nowrap                            " Don't wrap lines
 set foldmethod=indent   " Fold based on indent
 set foldnestmax=3       " Deepest fold is 3 levels
 set nofoldenable        " Don't fold by default
-" nnoremap <space> za
-" vnoremap <space> zf
+nnoremap <space> za     " Fold/Unfold with space
 
 " Completion
 " ==========
@@ -298,6 +306,9 @@ set timeoutlen=1000 ttimeoutlen=0
 " let g:syntastic_warning_symbol = "⚠"
 " let g:syntastic_javascript_checkers = ["eslint"]
 
+" SimpylFold Options
+let g:SimpylFold_docstring_preview=1
+
 "NerdTree Options
 map <c-t> :NERDTreeToggle<CR>
 let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
@@ -307,6 +318,19 @@ let g:ycm_min_num_of_chars_for_completion=2
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-E>', '<Up>']
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
 "jinja config
 au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
 
