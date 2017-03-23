@@ -6,21 +6,6 @@
 
 (setq package-enable-at-startup nil)
 (package-initialize)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (evil-jumper evil-leader helm markdown-mode use-package evil))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -52,11 +37,6 @@
     :config
     (global-evil-leader-mode))
 
-  (use-package evil-jumper
-    :ensure t
-    :config
-    (global-evil-jumper-mode))
-
   (use-package evil-surround
     :ensure t
     :config
@@ -76,7 +56,7 @@
 (use-package helm
   :ensure t)
 
-(use-package Magit
+(use-package magit
   :ensure t)
 
 (use-package org
