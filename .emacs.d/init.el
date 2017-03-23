@@ -35,7 +35,15 @@
   (use-package evil-leader
     :ensure t
     :config
-    (global-evil-leader-mode))
+    (global-evil-leader-mode)
+    (evil-leader/set-leader "<SPC>")
+    (evil-leader/set-key
+      "f"  'helm-imenu            ;; Jump to function in buffer
+      "s"  'ag-project            ;; Ag search from project's root
+      "g"  'magit-status
+      "S"  'delete-trailing-whitespace
+      "x"  'helm-M-x
+      "y"  'yank-to-x-clipboard))
 
   (use-package evil-surround
     :ensure t
@@ -62,3 +70,16 @@
 (use-package org
   :mode (("\\.org$" . org-mode))
   :ensure t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (tango-dark)))
+ '(inhibit-startup-screen t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
