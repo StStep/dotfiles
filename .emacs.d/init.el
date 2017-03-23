@@ -19,18 +19,26 @@
   :config
   (evil-mode 1)
 
+  ;; Use Emacs state in these additional modes
   (dolist (mode '(ag-mode
                   flycheck-error-list-mode
                   git-rebase-mode))
     (add-to-list 'evil-emacs-state-modes mode))
 
+  ;; Use insert state in these additional modes.
+  (dolist (mode '(magit-log-edit-mode))
+    (add-to-list 'evil-insert-state-modes mode))
+
   (evil-add-hjkl-bindings occur-mode-map 'emacs
-  (kbd "/")       'evil-search-forward
-  (kbd "n")       'evil-search-next
-  (kbd "N")       'evil-search-previous
-  (kbd "C-d")     'evil-scroll-down
-  (kbd "C-u")     'evil-scroll-up
-  (kbd "C-w C-w") 'other-window)
+    (kbd "/")       'evil-search-forward
+    (kbd "n")       'evil-search-next
+    (kbd "N")       'evil-search-previous
+    (kbd "C-d")     'evil-scroll-down
+    (kbd "C-u")     'evil-scroll-up
+    (kbd "C-w C-w") 'other-window)
+
+  ;; Global bindings
+  ;(define-key evil-normal-state-map (kbd "K") 'evil-insert-line-below)
  
   (use-package evil-leader
     :ensure t
