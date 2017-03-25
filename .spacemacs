@@ -290,6 +290,10 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+
+  ;; Relative Line N
+  (setq-default dotspacemacs-line-numbers 'relative)
+
   )
 
 (defun dotspacemacs/user-config ()
@@ -304,6 +308,7 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "K")
     (lambda () (interactive) (evil-insert-state) (newline) (evil-normal-state) (backward-char 1))
     )
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
