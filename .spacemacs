@@ -296,7 +296,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; Org mode settings
   (setq org-agenda-files '("~/org/"))
-
+  (setq org-todo-keywords
+        '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
  )
 
 (defun dotspacemacs/user-config ()
