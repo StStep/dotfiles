@@ -301,6 +301,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq org-tags-match-list-sublevels 'indented)
   (setq org-todo-keywords
         '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
+
+  ;; Add ulam files to c major mode
+  (setq auto-mode-alist (append '(("\\.ulam\\'" . c-mode))
+                                auto-mode-alist))
  )
 
 (defun dotspacemacs/user-config ()
@@ -320,7 +324,6 @@ you should place your code here."
   (with-eval-after-load 'org-agenda
     (add-to-list 'org-agenda-prefix-format '(todo . "  %b"))
     )
-
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
