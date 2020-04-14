@@ -8,12 +8,32 @@
 
 dir="$(pwd)"                               # dotfiles directory
 backupDir="$HOME/.dotfiles_backup/$(date)" # old dotfiles backup directory
-files="vimrc gitconfig"                    # list of files/folders to symlink in homedir
+ifiles="gitconfig"                          # list of files/folders to symlink in homedir
+
+if command -v vim > /dev/null 2>&1; then
+  ifiles="${ifiles} vimrc"
+  #ifiles="${ifiles} vim" Need to include vundle submodule and call submodule inti in this script
+fi
 
 ##########
 
+# Skip any that are already symlinks
+files=""
+for file in $ifiles; do
+  if [[ ! -L "${HOME}/.${file}" ]]; then
+    files="${files} ${file}"
+    break
+  fi
+done
+
+if [[ $files == "" ]]; then
+    echo "Nothing to do"
+    exit 0
+fi
+
 # create dotfiles_old in homedir
-echo "Creating '$backupDir' for backup of any existing dotfiles in ~/"
+echo "Creating '$backupDir' for backup of any existing dotfiles in ~/ in list:"
+echo "${files}"
 mkdir -p "$backupDir"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
@@ -25,7 +45,9 @@ for file in $files; do
         rm "$HOME/.$file"
     fi
     ln -s "$dir/$file" "$HOME/.$file"
-	echo
 done
 echo done
+
+# Post install setup
+#vim +PluginInstall +qall Need to have vundle setup
 
