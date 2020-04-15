@@ -8,7 +8,7 @@
 
 dir="$(pwd)"                               # dotfiles directory
 backupDir="$HOME/.dotfiles_backup/$(date)" # old dotfiles backup directory
-ifiles="gitconfig"                          # list of files/folders to symlink in homedir
+ifiles="gitconfig gitignore"               # list of files/folders to symlink in homedir
 
 if command -v vim > /dev/null 2>&1; then
   ifiles="${ifiles} vimrc"
