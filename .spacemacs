@@ -337,46 +337,46 @@ you should place your code here."
     (setq org-agenda-files (directory-files-recursively org-root "\.org$"))
     (setq org-todo-keywords
           '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
+    ;; Replace org-set-tags with org-set-tags-command in keybinding
+    (spacemacs/set-leader-keys-for-major-mode 'org-mode ":" 'org-set-tags-command)
+    ;; Pretty checknoxes
+    (add-hook 'org-mode-hook (lambda ()
+                               "Beautify Org Checkbox Symbol"
+                               (push '("[ ]" .  "☐") prettify-symbols-alist)
+                               (push '("[X]" . "☑" ) prettify-symbols-alist)
+                               (push '("[-]" . "❍" ) prettify-symbols-alist)
+                               (prettify-symbols-mode)))
+    (defface org-checkbox-done-text
+      '((t (:foreground "#71696A")))
+      "Face for the text part of a checked org-mode checkbox.")
+    ;; Makes some things look nicer
+    (setq org-startup-indented t
+          org-startup-folded nil
+          org-pretty-entities t
+          ;; show actually italicized text instead of /italicized text/
+          org-hide-emphasis-markers t
+          org-agenda-block-separator ""
+          org-fontify-whole-heading-line t
+          org-fontify-done-headline t
+          org-fontify-quote-and-verse-blocks t)
+    ;; Open agenda in current window
+    ;(setq org-agenda-window-setup (quote current-window))
+    ;; Ignore scheduled tasks in task list view (SPC m t)
+    (setq org-agenda-todo-ignore-scheduled t)
+    (setq org-agenda-todo-ignore-deadlines t)
+    ;; Skip finished items
+    (setq org-agenda-skip-deadline-if-done t)
+    (setq org-agenda-skip-scheduled-if-done t)
+    ;; Open links in current buffer
+    (setq org-link-frame-setup (quote (file . find-file)))
+    (setq org-link-frame-setup
+          (quote
+           ((file . find-file)
+            (vm . vm-visit-folder-other-frame)
+            (vm-imap . vm-visit-imap-folder-other-frame)
+            (gnus . org-gnus-no-new-news)
+            (wl . wl-other-frame))))
     )
-  (add-hook 'org-mode-hook (lambda ()
-                             "Beautify Org Checkbox Symbol"
-                             (push '("[ ]" .  "☐") prettify-symbols-alist)
-                             (push '("[X]" . "☑" ) prettify-symbols-alist)
-                             (push '("[-]" . "❍" ) prettify-symbols-alist)
-                             (prettify-symbols-mode)))
-  (defface org-checkbox-done-text
-    '((t (:foreground "#71696A")))
-    "Face for the text part of a checked org-mode checkbox.")
-  ;; Makes some things look nicer
-  (setq org-startup-indented t
-        org-startup-folded nil
-        org-pretty-entities t
-        ;; show actually italicized text instead of /italicized text/
-        org-hide-emphasis-markers t
-        org-agenda-block-separator ""
-        org-fontify-whole-heading-line t
-        org-fontify-done-headline t
-        org-fontify-quote-and-verse-blocks t)
-  ;(setq org-agenda-window-setup (quote current-window))
-  ;; Set task-related keywords
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "RUNNING(r)" "WAITING(w)" "IDEA(i)" "|" "DONE(d)" "CANCELLED(c)" "DEFERRED(f)")
-          (sequence "MEETING(m)" "|" "MEETING_DONE(M)")))
-  ;; Ignore scheduled tasks in task list view (SPC m t)
-  (setq org-agenda-todo-ignore-scheduled t)
-  (setq org-agenda-todo-ignore-deadlines t)
-  ;; Skip finished items
-  (setq org-agenda-skip-deadline-if-done t)
-  (setq org-agenda-skip-scheduled-if-done t)
-  ;; Open links in current buffer
-  (setq org-link-frame-setup (quote (file . find-file)))
-  (setq org-link-frame-setup
-        (quote
-         ((file . find-file)
-          (vm . vm-visit-folder-other-frame)
-          (vm-imap . vm-visit-imap-folder-other-frame)
-          (gnus . org-gnus-no-new-news)
-          (wl . wl-other-frame))))
   ;; Org-Capture templates
   (setq org-capture-templates
         (quote (
