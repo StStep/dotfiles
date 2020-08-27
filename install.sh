@@ -49,5 +49,9 @@ done
 echo done
 
 # Post install setup
-#vim +PluginInstall +qall Need to have vundle setup
+if command -v vim > /dev/null 2>&1; then
+    #vim +PluginInstall +qall Need to have vundle setup
+else
+    git config --global core.editor vi
+fi
 
